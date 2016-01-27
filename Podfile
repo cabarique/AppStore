@@ -8,3 +8,9 @@ pod 'Moya/ReactiveCocoa', '~> 6.0.0'
 
 #framework that convers responses from/to json
 pod 'ObjectMapper', '~> 1.1'
+
+#Material Design
+pod 'Material', '~> 1.0'
+
+#font awesome
+pod 'FontAwesome.swift'

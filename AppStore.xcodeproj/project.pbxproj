@@ -9,10 +9,17 @@
 /* Begin PBXBuildFile section */
 		697609A8B5B239D5E8337FFC /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B1324BDDFE0AB1FDC0A0527 /* Pods.framework */; };
 		DA045FA71C58418E00026DE6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA045FA61C58418E00026DE6 /* AppDelegate.swift */; };
-		DA045FA91C58418E00026DE6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA045FA81C58418E00026DE6 /* ViewController.swift */; };
-		DA045FAC1C58418E00026DE6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA045FAA1C58418E00026DE6 /* Main.storyboard */; };
+		DA045FA91C58418E00026DE6 /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA045FA81C58418E00026DE6 /* StoreViewController.swift */; };
 		DA045FAE1C58418E00026DE6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA045FAD1C58418E00026DE6 /* Assets.xcassets */; };
 		DA045FB11C58418E00026DE6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA045FAF1C58418E00026DE6 /* LaunchScreen.storyboard */; };
+		DA045FBA1C58465F00026DE6 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA045FB81C58465F00026DE6 /* CategoriesViewController.swift */; };
+		DA045FBB1C58465F00026DE6 /* CategoriesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA045FB91C58465F00026DE6 /* CategoriesView.xib */; };
+		DA045FBE1C5846CB00026DE6 /* StoreView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA045FBD1C5846CB00026DE6 /* StoreView.xib */; };
+		DA045FC11C58520D00026DE6 /* AppStoreAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA045FC01C58520C00026DE6 /* AppStoreAPI.swift */; };
+		DA045FC31C58530F00026DE6 /* AppStoreClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA045FC21C58530F00026DE6 /* AppStoreClient.swift */; };
+		DA045FC51C58533400026DE6 /* AppStoreClientImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA045FC41C58533400026DE6 /* AppStoreClientImp.swift */; };
+		DA045FC91C58568F00026DE6 /* AppsVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA045FC81C58568F00026DE6 /* AppsVO.swift */; };
+		DA045FCC1C58575F00026DE6 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA045FCB1C58575F00026DE6 /* AppModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,11 +28,18 @@
 		8EDA369B68C1875FE88A6357 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		DA045FA31C58418E00026DE6 /* AppStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA045FA61C58418E00026DE6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DA045FA81C58418E00026DE6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		DA045FAB1C58418E00026DE6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		DA045FA81C58418E00026DE6 /* StoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreViewController.swift; sourceTree = "<group>"; };
 		DA045FAD1C58418E00026DE6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DA045FB01C58418E00026DE6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DA045FB21C58418E00026DE6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DA045FB81C58465F00026DE6 /* CategoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
+		DA045FB91C58465F00026DE6 /* CategoriesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoriesView.xib; sourceTree = "<group>"; };
+		DA045FBD1C5846CB00026DE6 /* StoreView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoreView.xib; sourceTree = "<group>"; };
+		DA045FC01C58520C00026DE6 /* AppStoreAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppStoreAPI.swift; sourceTree = "<group>"; };
+		DA045FC21C58530F00026DE6 /* AppStoreClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppStoreClient.swift; sourceTree = "<group>"; };
+		DA045FC41C58533400026DE6 /* AppStoreClientImp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppStoreClientImp.swift; sourceTree = "<group>"; };
+		DA045FC81C58568F00026DE6 /* AppsVO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppsVO.swift; sourceTree = "<group>"; };
+		DA045FCB1C58575F00026DE6 /* AppModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,14 +92,53 @@
 		DA045FA51C58418E00026DE6 /* AppStore */ = {
 			isa = PBXGroup;
 			children = (
+				DA045FCA1C58574D00026DE6 /* Model */,
+				DA045FBF1C584E9700026DE6 /* StoreAPI */,
+				DA045FBC1C58466700026DE6 /* Views */,
 				DA045FA61C58418E00026DE6 /* AppDelegate.swift */,
-				DA045FA81C58418E00026DE6 /* ViewController.swift */,
-				DA045FAA1C58418E00026DE6 /* Main.storyboard */,
+				DA045FA81C58418E00026DE6 /* StoreViewController.swift */,
+				DA045FB81C58465F00026DE6 /* CategoriesViewController.swift */,
 				DA045FAD1C58418E00026DE6 /* Assets.xcassets */,
 				DA045FAF1C58418E00026DE6 /* LaunchScreen.storyboard */,
 				DA045FB21C58418E00026DE6 /* Info.plist */,
 			);
 			path = AppStore;
+			sourceTree = "<group>";
+		};
+		DA045FBC1C58466700026DE6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DA045FB91C58465F00026DE6 /* CategoriesView.xib */,
+				DA045FBD1C5846CB00026DE6 /* StoreView.xib */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		DA045FBF1C584E9700026DE6 /* StoreAPI */ = {
+			isa = PBXGroup;
+			children = (
+				DA045FC71C58567700026DE6 /* VOs */,
+				DA045FC01C58520C00026DE6 /* AppStoreAPI.swift */,
+				DA045FC21C58530F00026DE6 /* AppStoreClient.swift */,
+				DA045FC41C58533400026DE6 /* AppStoreClientImp.swift */,
+			);
+			name = StoreAPI;
+			sourceTree = "<group>";
+		};
+		DA045FC71C58567700026DE6 /* VOs */ = {
+			isa = PBXGroup;
+			children = (
+				DA045FC81C58568F00026DE6 /* AppsVO.swift */,
+			);
+			name = VOs;
+			sourceTree = "<group>";
+		};
+		DA045FCA1C58574D00026DE6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DA045FCB1C58575F00026DE6 /* AppModel.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,7 +204,8 @@
 			files = (
 				DA045FB11C58418E00026DE6 /* LaunchScreen.storyboard in Resources */,
 				DA045FAE1C58418E00026DE6 /* Assets.xcassets in Resources */,
-				DA045FAC1C58418E00026DE6 /* Main.storyboard in Resources */,
+				DA045FBE1C5846CB00026DE6 /* StoreView.xib in Resources */,
+				DA045FBB1C58465F00026DE6 /* CategoriesView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,22 +264,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA045FA91C58418E00026DE6 /* ViewController.swift in Sources */,
+				DA045FC11C58520D00026DE6 /* AppStoreAPI.swift in Sources */,
+				DA045FC51C58533400026DE6 /* AppStoreClientImp.swift in Sources */,
+				DA045FA91C58418E00026DE6 /* StoreViewController.swift in Sources */,
+				DA045FCC1C58575F00026DE6 /* AppModel.swift in Sources */,
+				DA045FC31C58530F00026DE6 /* AppStoreClient.swift in Sources */,
 				DA045FA71C58418E00026DE6 /* AppDelegate.swift in Sources */,
+				DA045FBA1C58465F00026DE6 /* CategoriesViewController.swift in Sources */,
+				DA045FC91C58568F00026DE6 /* AppsVO.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		DA045FAA1C58418E00026DE6 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DA045FAB1C58418E00026DE6 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		DA045FAF1C58418E00026DE6 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
