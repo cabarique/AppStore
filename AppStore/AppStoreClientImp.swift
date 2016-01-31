@@ -18,8 +18,9 @@ public class AppStoreClientImp: NSObject, AppStoreClient {
         let signal = RACSignal.createSignal { (subscriber) -> RACDisposable! in
             
             AppStoreAPI.request(.getFreeApps(limit)).filterSuccessfulStatusCodes().mapJSON().subscribeNext({ (response) -> Void in
-                subscriber.sendNext(Mapper<AppsVO>().map(response))
-                
+                let mapResponse = Mapper<AppsVO>().map(response)
+                subscriber.sendNext(mapResponse)
+                subscriber.sendCompleted()
 
                 }, error: { (error) -> Void in
                     subscriber.sendError(error)

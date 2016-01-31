@@ -10,12 +10,13 @@ import Foundation
 
 class AppModel: NSObject {
     var name = ""
+    var artist = ""
     var images: [String] = []
     var encondedImages: [NSData] = []
     var summary: String = ""
     var price: Double = 0.0
     var rights: String = ""
     var link: String = ""
-    var categoriy: String = ""
+    var category: String = ""
     var releaseDate: NSDate = NSDate()
 }

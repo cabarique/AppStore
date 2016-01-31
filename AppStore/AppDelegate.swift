@@ -18,7 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         application.statusBarHidden = true
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        window?.rootViewController = SideNavigationViewController(mainViewController: StoreViewController(), sideViewController: CategoriesViewController())
+        let sideNav = SideNavigationViewController(mainViewController: StoreViewController(), sideViewController: CategoriesViewController())
+        window?.rootViewController = sideNav
         // Override point for customization after application launch.
         window?.makeKeyAndVisible()
         return true
