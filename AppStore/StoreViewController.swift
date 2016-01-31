@@ -9,6 +9,7 @@
 import UIKit
 import Material
 import FontAwesome_swift
+import ReachabilitySwift
 
 class StoreViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -26,6 +27,12 @@ class StoreViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
+    var appDAO: AppsDAO?
+    
+    var reachability: Reachability?
+    
+    var noNetWorkView: UILabel!
+    
     var selectedCategory:Int?
     
     var navigationBarView: NavigationBarView?
@@ -42,24 +49,27 @@ class StoreViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "filterAppsByCategory:", name: "filterAppsByCategory", object: nil)
-        api.getFreeApps(withLimit: limit).subscribeNext { (response) -> Void in
-            let appsVO = response as! AppsVO
-            categories = appsVO.categories
-            self.apps = appsVO.apps
-        }
-
+        
         appsTAble.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        // Do any additional setup after loading the view, typically from a nib.
+
+        noNetWorkView = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 20))
+        noNetWorkView.translatesAutoresizingMaskIntoConstraints = false
+        noNetWorkView.text = "No internet Conection"
+        noNetWorkView.textAlignment = .Center
+        noNetWorkView.textColor = UIColor.whiteColor()
+        noNetWorkView.backgroundColor = MaterialColor.grey.darken1
+        noNetWorkView.hidden = true
+        
         navigationBarView = NavigationBarView()
         navigationBarView!.backgroundColor = MaterialColor.blue.darken3
-        
+
         /*
         To lighten the status bar - add the
         "View controller-based status bar appearance = NO"
         to your info.plist file and set the following property.
         */
-        navigationBarView!.statusBarStyle = .LightContent
         
         // Title label.
         let titleLabel: UILabel = UILabel()
@@ -96,16 +106,61 @@ class StoreViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         // To support orientation changes, use MaterialLayout.
         view.addSubview(navigationBarView!)
+        view.insertSubview(noNetWorkView, belowSubview: navigationBarView!)
+        
         navigationBarView!.translatesAutoresizingMaskIntoConstraints = false
         MaterialLayout.alignFromTop(view, child: navigationBarView!)
         MaterialLayout.alignToParentHorizontally(view, child: navigationBarView!)
         MaterialLayout.height(view, child: navigationBarView!, height: 70)
-        MaterialLayout.alignToParent(view, child: appsTAble, top: 70)
+        
+        MaterialLayout.alignFromTop(view, child: noNetWorkView, top: 70)
+        MaterialLayout.alignFromRight(view, child: noNetWorkView)
+        MaterialLayout.alignFromLeft(view, child: noNetWorkView)
+        
+        //MaterialLayout.alignToParent(view, child: appsTAble, top: 70)
+        
+        let alignTableConstraint = NSLayoutConstraint(item: appsTAble, attribute: .Top, relatedBy: .Equal, toItem: navigationBarView, attribute: .Bottom, multiplier: 1, constant: 0)
+        alignTableConstraint.priority = 750
+        view.addConstraint(alignTableConstraint)
+        
+        let alignTableToNoNetWorktConstraint = NSLayoutConstraint(item: appsTAble, attribute: .Top, relatedBy: .Equal, toItem: noNetWorkView, attribute: .Bottom, multiplier: 1, constant: 10)
+        alignTableToNoNetWorktConstraint.priority = 500
+        view.addConstraint(alignTableToNoNetWorktConstraint)
+        
+        
+        do {
+            reachability = try Reachability.reachabilityForInternetConnection()
+            NSNotificationCenter.defaultCenter().addObserver(self,
+                selector: "reachabilityChanged:",
+                name: ReachabilityChangedNotification,
+                object: reachability)
+            try! reachability!.startNotifier()
+        } catch {
+            print("Unable to create Reachability")
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func getApps(){
+        api.getFreeApps(withLimit: limit).subscribeNext({ (response) -> Void in
+            let appsVO = response as! AppsVO
+            categories = appsVO.categories
+            self.apps = appsVO.apps
+            }, error: { (error) -> Void in
+                if self.apps.count == 0 {//fetch data from DB
+                    if nil == self.appDAO{
+                        self.appDAO = AppsDAO()
+                    }
+                    let fetchedApps = self.appDAO?.getAllApps()
+                    //self.apps = fetchedApps
+                }
+            }) { () -> Void in
+                
+        }
     }
     
     // MARK: Tableview Magement
@@ -145,17 +200,20 @@ class StoreViewController: UIViewController, UITableViewDelegate, UITableViewDat
         cell.textLabel?.text = app.name
         cell.textLabel?.lineBreakMode = .ByWordWrapping
         cell.textLabel?.numberOfLines = 2
-        if app.encondedImages.count > 0 {
-            cell.imageView?.layer.cornerRadius = 10
-            cell.imageView?.image = UIImage(data: app.encondedImages[0])
+        cell.imageView?.image = UIImage(named: "no-icon")
+        cell.imageView?.layer.cornerRadius = 10
+        cell.imageView?.layer.borderColor = MaterialColor.grey.lighten1.CGColor
+        cell.imageView?.layer.borderWidth = 1
+        cell.imageView?.clipsToBounds = true
+        
+        if let data = app.encodedImage{
+            cell.imageView?.image = UIImage(data: data)
         }else{
-            cell.imageView?.layer.cornerRadius = 10
-            cell.imageView?.image = UIImage()
-            if app.images.count > 0{
-                let url = app.images[0]
+            if app.image != ""{
+                let url = app.image
                 getDataFromUrl(url) { data in
                     dispatch_async(dispatch_get_main_queue()) {
-                        app.encondedImages.insert(data!, atIndex: 0)
+                        app.encodedImage = data!
                         if let cellToUpdate = self.appsTAble?.cellForRowAtIndexPath(indexPath){
                             cellToUpdate.imageView?.image = UIImage(data: data!)
                             cellToUpdate.imageView?.layer.cornerRadius = 10
@@ -179,7 +237,12 @@ class StoreViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        detailView.showInView(self.view, withApp: apps[indexPath.section][indexPath.row], animated: true)
+        var section: Int = indexPath.section
+        if nil != selectedCategory{
+            section = selectedCategory!
+        }
+        tableView.deselectRowAtIndexPath(indexPath, animated: false)
+        detailView.showInView(self.view, withApp: apps[section][indexPath.row], animated: true)
     }
     
 
@@ -200,6 +263,24 @@ class StoreViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
         sideNavigationViewController?.close()
     }
-
+    
+    func reachabilityChanged(note: NSNotification) {
+        
+        let reachability = note.object as! Reachability
+        
+        if reachability.isReachable() {
+            if reachability.isReachableViaWiFi() {
+                print("Reachable via WiFi")
+            } else {
+                print("Reachable via Cellular")
+            }
+            noNetWorkView.hidden = true
+        } else {
+            print("UnReachable")
+            noNetWorkView.hidden = false
+        }
+        
+        getApps()
+    }
 }
 

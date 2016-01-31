@@ -28,11 +28,10 @@ class AppsVO: Mappable {
             app.category <- map["feed.entry.\(i).category.attributes.label"]
             app.artist <- map["feed.entry.\(i).im:artist.label"]
             app.link <- map["feed.entry.\(i).link.attributes.href"]
+            app.image <- map["feed.entry.\(i).im:image.0.label"]            
             if categories.contains(app.category) == false { categories.append(app.category) }
-            var images: [AnyObject] = []; images <- map["feed.entry.\(i).im:image"]
-            for image in images{
-                app.images.append(image["label"] as! String)
-            }
+
+
             let index = categories.indexOf(app.category)!
             if apps.count > index{
                 apps[index].append(app)

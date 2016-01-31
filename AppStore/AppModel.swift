@@ -7,16 +7,17 @@
 //
 
 import Foundation
+import RealmSwift
 
-class AppModel: NSObject {
-    var name = ""
-    var artist = ""
-    var images: [String] = []
-    var encondedImages: [NSData] = []
-    var summary: String = ""
-    var price: Double = 0.0
-    var rights: String = ""
-    var link: String = ""
-    var category: String = ""
-    var releaseDate: NSDate = NSDate()
+class AppModel: Object {
+    dynamic var name = ""
+    dynamic var artist = ""
+    dynamic var image: String = ""
+    dynamic var encodedImage: NSData?
+    dynamic var summary: String = ""
+    dynamic var price: Double = 0.0
+    dynamic var rights: String = ""
+    dynamic var link: String = ""
+    dynamic var category: String = ""
+    dynamic var releaseDate: NSDate = NSDate()
 }

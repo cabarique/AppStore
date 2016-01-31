@@ -21,6 +21,8 @@ class AppDetailViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
     
+    @IBOutlet weak var imageBackgroundView: UIView!
+    
     @IBOutlet weak var getButton: FlatButton!
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
@@ -37,8 +39,11 @@ class AppDetailViewController: UIViewController {
         self.contentView.layer.cornerRadius = 5
         self.view.layer.shadowOpacity = 0.8
         self.view.layer.shadowOffset = CGSizeMake(0.0, 0.0)
-        appImage.layer.cornerRadius = 10
-        appImage.backgroundColor = UIColor.clearColor()
+        imageBackgroundView.layer.cornerRadius = 20
+        imageBackgroundView.clipsToBounds = true
+        imageBackgroundView.layer.borderWidth = 1
+        imageBackgroundView.layer.borderColor = MaterialColor.grey.lighten1.CGColor
+        appImage.image = UIImage(named: "no-icon")
         getButton.layer.borderColor = MaterialColor.blue.darken2.CGColor
         getButton.layer.borderWidth = 1
 
@@ -46,12 +51,10 @@ class AppDetailViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        if app!.encondedImages.count > 0{
-            appImage.image = UIImage(data: app!.encondedImages[0])
+        if let data = app!.encodedImage{
+            appImage.image = UIImage(data: data)
         }
         
-        appImage.layer.cornerRadius = 10
-        appImage.setNeedsDisplay()
         
         name.text = app!.name
         artist.text = app!.artist
@@ -100,13 +103,11 @@ class AppDetailViewController: UIViewController {
     
     func showAnimate()
     {
-        //self.view.transform = CGAffineTransformMakeScale(1.3, 1.3)
         self.view.alpha = 0.0;
         self.blurEffectView?.alpha = 0.0
         UIView.animateWithDuration(0.25, animations: {
             self.view.alpha = 1.0
             self.blurEffectView?.alpha = 1.0
-            //self.view.transform = CGAffineTransformMakeScale(1.0, 1.0)
         });
         
     }
@@ -116,7 +117,6 @@ class AppDetailViewController: UIViewController {
 
         view.removeFromSuperview()
         UIView.animateWithDuration(0.25, animations: {
-            //self.view.transform = CGAffineTransformMakeScale(1.3, 1.3)
             self.view.alpha = 0.0
             self.blurEffectView?.alpha = 0.0
             }, completion:{(finished : Bool)  in

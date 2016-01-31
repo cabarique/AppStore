@@ -39,7 +39,22 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>ReachabilitySwift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>ReactiveCocoa.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Realm.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>RealmSwift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -58,6 +73,16 @@
 			<true/>
 		</dict>
 		<key>432ECC54282C84882B482CCB4CF227FC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4C19C964E8E46D19D922234D66A63496</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5A6629706BBC7A8A911CE724D47096DF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -87,12 +112,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>C7420FF38BCF7470F4A0355F8D412A8B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>C8F54543305BD95F34FAB796C9CAAFCA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F1A0FBEAC81C9576DD5B7E8E09C215B8</key>
+		<key>CB63DB8DDB764DB532361C8784AE6CE2</key>
 		<dict>
 			<key>primary</key>
 			<true/>

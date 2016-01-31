@@ -12,5 +12,11 @@ pod 'ObjectMapper', '~> 1.1'
 #Material Design
 pod 'Material', '~> 1.0'
 
+#check for network status
+pod 'ReachabilitySwift', :git => 'https://github.com/ashleymills/Reachability.swift', '~> 2.3.3'
+
+#mobile database: a replacement for SQLite & Core Data.
+pod 'RealmSwift', '~> 0.97.1'
+
 #font awesome
-pod 'FontAwesome.swift'
+pod 'FontAwesome.swift', '~> 0.7.0'

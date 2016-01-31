@@ -20,6 +20,8 @@
 		DA045FC51C58533400026DE6 /* AppStoreClientImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA045FC41C58533400026DE6 /* AppStoreClientImp.swift */; };
 		DA045FC91C58568F00026DE6 /* AppsVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA045FC81C58568F00026DE6 /* AppsVO.swift */; };
 		DA045FCC1C58575F00026DE6 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA045FCB1C58575F00026DE6 /* AppModel.swift */; };
+		DA5258401C5E64200070D8C9 /* AppsDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA52583F1C5E64200070D8C9 /* AppsDAO.swift */; };
+		DA5258431C5E650C0070D8C9 /* Results+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5258421C5E650C0070D8C9 /* Results+helper.swift */; };
 		DA8B8AFF1C5D7799000778C2 /* AppDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8B8AFD1C5D7799000778C2 /* AppDetailViewController.swift */; };
 		DA8B8B001C5D7799000778C2 /* DetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA8B8AFE1C5D7799000778C2 /* DetailView.xib */; };
 /* End PBXBuildFile section */
@@ -42,6 +44,8 @@
 		DA045FC41C58533400026DE6 /* AppStoreClientImp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppStoreClientImp.swift; sourceTree = "<group>"; };
 		DA045FC81C58568F00026DE6 /* AppsVO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppsVO.swift; sourceTree = "<group>"; };
 		DA045FCB1C58575F00026DE6 /* AppModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
+		DA52583F1C5E64200070D8C9 /* AppsDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppsDAO.swift; sourceTree = "<group>"; };
+		DA5258421C5E650C0070D8C9 /* Results+helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Results+helper.swift"; sourceTree = "<group>"; };
 		DA8B8AFD1C5D7799000778C2 /* AppDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDetailViewController.swift; sourceTree = "<group>"; };
 		DA8B8AFE1C5D7799000778C2 /* DetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -96,6 +100,8 @@
 		DA045FA51C58418E00026DE6 /* AppStore */ = {
 			isa = PBXGroup;
 			children = (
+				DA5258411C5E64F70070D8C9 /* Helper */,
+				DA52583E1C5E63FF0070D8C9 /* DAO */,
 				DA045FCA1C58574D00026DE6 /* Model */,
 				DA045FBF1C584E9700026DE6 /* StoreAPI */,
 				DA045FBC1C58466700026DE6 /* Views */,
@@ -145,6 +151,22 @@
 				DA045FCB1C58575F00026DE6 /* AppModel.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		DA52583E1C5E63FF0070D8C9 /* DAO */ = {
+			isa = PBXGroup;
+			children = (
+				DA52583F1C5E64200070D8C9 /* AppsDAO.swift */,
+			);
+			name = DAO;
+			sourceTree = "<group>";
+		};
+		DA5258411C5E64F70070D8C9 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				DA5258421C5E650C0070D8C9 /* Results+helper.swift */,
+			);
+			name = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -278,8 +300,10 @@
 				DA045FA91C58418E00026DE6 /* StoreViewController.swift in Sources */,
 				DA045FCC1C58575F00026DE6 /* AppModel.swift in Sources */,
 				DA045FC31C58530F00026DE6 /* AppStoreClient.swift in Sources */,
+				DA5258431C5E650C0070D8C9 /* Results+helper.swift in Sources */,
 				DA045FA71C58418E00026DE6 /* AppDelegate.swift in Sources */,
 				DA045FBA1C58465F00026DE6 /* CategoriesViewController.swift in Sources */,
+				DA5258401C5E64200070D8C9 /* AppsDAO.swift in Sources */,
 				DA045FC91C58568F00026DE6 /* AppsVO.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

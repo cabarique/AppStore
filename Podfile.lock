@@ -9,6 +9,7 @@ PODS:
     - Moya/Core
     - ReactiveCocoa (= 4.0.0-RC.2)
   - ObjectMapper (1.1.1)
+  - ReachabilitySwift (2.3.3)
   - ReactiveCocoa (4.0.0-RC.2):
     - ReactiveCocoa/UI (= 4.0.0-RC.2)
     - Result (~> 1.0)
@@ -20,6 +21,11 @@ PODS:
   - ReactiveCocoa/UI (4.0.0-RC.2):
     - ReactiveCocoa/Core
     - Result (~> 1.0)
+  - Realm (0.97.1):
+    - Realm/Headers (= 0.97.1)
+  - Realm/Headers (0.97.1)
+  - RealmSwift (0.97.1):
+    - Realm (= 0.97.1)
   - Result (1.0.1)
 
 DEPENDENCIES:
@@ -27,6 +33,17 @@ DEPENDENCIES:
   - Material (~> 1.0)
   - Moya/ReactiveCocoa (~> 6.0.0)
   - ObjectMapper (~> 1.1)
+  - ReachabilitySwift (from `https://github.com/ashleymills/Reachability.swift`)
+  - RealmSwift
+
+EXTERNAL SOURCES:
+  ReachabilitySwift:
+    :git: https://github.com/ashleymills/Reachability.swift
+
+CHECKOUT OPTIONS:
+  ReachabilitySwift:
+    :commit: ec4b33a7e439e5b203b0cae0f71383ca803ad031
+    :git: https://github.com/ashleymills/Reachability.swift
 
 SPEC CHECKSUMS:
   Alamofire: 5f730ba29fd113b7ddd71c1e65d0c630acf5d7b0
@@ -34,7 +51,10 @@ SPEC CHECKSUMS:
   Material: 5ca840624a279ce4d02c4e1ef3059d1c0190b7f3
   Moya: fcd80ed553234960a4d28529c184850a8fb43b80
   ObjectMapper: 4143abed1dbd49b73d75092fe8fa1c88ed6434b7
+  ReachabilitySwift: e0f6b6f280effb47731acfaaa2d5ffe223703793
   ReactiveCocoa: 0d875167414bfe743bc5bf544ae5b05fddaf757d
+  Realm: 6854f49cc788171573a0605fe5e55d3224bc39f9
+  RealmSwift: 21aa38ae5210a8e7d3ca2fd02a0ce82476672101
   Result: caef80340451e1f07492fa1e89117f83613bce24
 
 COCOAPODS: 0.39.0
